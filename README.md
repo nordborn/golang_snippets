@@ -1,7 +1,7 @@
 # golang_snippets
 
 ## Inheritance
-https://play.golang.org/p/x11hzUQF0V
+https://play.golang.org/p/hHj_GEpEFb
 ```
 package main
 
@@ -12,48 +12,57 @@ import (
 
 // ColorNamer
 type ColorNamer interface {
-	GetColor() string
-	GetName() string
+	Color() string
+	Name() string
 }
 
 // common func
-func you(cn ColorNamer) {
-	fmt.Println(cn.GetColor(), cn.GetName())
+func cnDetails(cn ColorNamer) {
+	fmt.Println(cn.Color(), cn.Name())
 }
 
 
 // A
 type A struct {
-	Color string
-	Name  string
+	color string
+	name  string
 }
 
-func (a *A) GetColor() string {
-	return a.Color
+func (a *A) Color() string {
+	return a.color
 }
 
-func (a *A) GetName() string {
-	return a.Name
+func (a *A) Name() string {
+	return a.name
 }
 
 
-// B
+// B inherit A
 type B struct {
-	Name string
+	name string
 	A
 }
 
 // redefine for B
-func (b *B) GetName() string {
-	return b.Name
+func (b *B) Name() string {
+	return b.name
 }
 
 
 
 func main() {
 	a := A{"green", "A"}
-	you(&a)
+	cnDetails(&a)
 	b := B{"B", a}
-	you(&b)
+	cnDetails(&b)
 }
+
+
+```
+
+output
+
+```
+green A
+green B
 ```

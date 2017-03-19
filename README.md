@@ -1,7 +1,7 @@
 # golang_snippets
 
 ## Inheritance
-
+https://play.golang.org/p/x11hzUQF0V
 ```
 package main
 
